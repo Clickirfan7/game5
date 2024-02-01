@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>PST Registration</title>
+  <style>
+    body {
+      background-color: #f0f0f0; /* Light grey background */
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff; /* White background */
+      border: 2px solid #ddd; /* Light grey border */
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333; /* Dark grey text color */
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff; /* Blue text color */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555; /* Dark grey label text color */
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ddd; /* Light grey border for inputs */
+      border-radius: 4px;
+    }
+
+    input[type="file"] {
+      border: none;
+    }
+
+    select {
+      background-color: #f9f9f9; /* Light grey background for select */
+    }
+
+    input[type="submit"] {
+      background-color: #007bff; /* Blue submit button background */
+      color: #fff; /* White text color */
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 15px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+  </style>
+</head>
+
+<body>
+  <h1>PST Registration</h1>
+  <h2>Individual | Rs.15,000 | Completion Time: 7 - 10 Working Days</h2>
+  <form action="your_backend_script.php" method="post" enctype="multipart/form-data" id="registrationForm">
+    <label for="cnic">Color copy of CNIC:</label>
+    <input id="cnic" name="cnic" required="" type="file" />
+
+    <label for="officeDocs">Rent agreement/ownership docs of Office premises:</label>
+    <input id="officeDocs" name="officeDocs" required="" type="file" />
+
+    <label for="letterhead">Letterhead:</label>
+    <input id="letterhead" name="letterhead" required="" type="file" />
+
+    <label for="electricityBill">Latest paid electricity bill:</label>
+    <input id="electricityBill" name="electricityBill" required="" type="file" />
+
+    <label for="phone">Phone Number:</label>
+    <input id="phone" name="phone" required="" type="tel" />
+
+    <label for="email">Email address:</label>
+    <input id="email" name="email" required="" type="email" />
+
+    <label for="bankCertificate">Bank Account Certificate:</label>
+    <input id="bankCertificate" name="bankCertificate" required="" type="file" />
+
+    <label for="acquisitionInfo">Acquisition Date, Capacity and Business Activity:</label>
+    <input id="acquisitionInfo" name="acquisitionInfo" required="" type="text" />
+
+    <label for="branchesInfo">Particulars of all branches (if any):</label>
+    <input id="branchesInfo" name="branchesInfo" required="" type="text" />
+
+    <label for="authorization">Authorization of principal Officer:</label>
+    <input id="authorization" name="authorization" required="" type="file" />
+
+    <label for="applicationForm">Signed Application Form:</label>
+    <input id="applicationForm" name="applicationForm" required="" type="file" />
+
+    <label for="communication">Preferred Communication Method:</label>
+    <select name="communication">
+      <option value="freshchat">Freshchat</option>
+      <option value="whatsapp">WhatsApp</option>
+    </select>
+
+    <input type="submit" value="Submit" />
+  </form>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var formData = new FormData(this);
+
+      fetch(this.action, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          alert("Form submitted successfully!");
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          alert("An error occurred while submitting the form.");
+        });
+    });
+  </script>
+</body>
+
+</html>
